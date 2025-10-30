@@ -1,35 +1,19 @@
 ---
-import "./styles/global.css";
+import "../styles/global.css";
+import { supabase } from "../lib/supabase";
+import Map from "../components/Map.astro";
+import PrinterForm from "../components/PrinterForm.astro";
+
+const { data: printers } = await supabase.from("printers").select("*");
 ---
 
-<html lang="en">
+<html>
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<meta
-			name="description"
-			content="A crowdsourced web app for mapping University of Birmingham printers"
-		/>
-		<title>Coming soon!</title>
+		<title>BHAMPRINTERS: HOME</title>
 	</head>
 	<body>
-		<h1 class="text-4xl font-mono font-bold text-center mt-20">BHAMPRINTERS</h1>
-		<h2 class="text-2xl font-mono font-semibold text-center mt-4">
-			Crowdsourced web app for mapping University of Birmingham printers
-		</h2>
-		<p class="text-xl font-mono text-center mt-10">Coming soon!</p>
+		<h1 class="text-4xl font-mono text-center p-2">BHAMPRINTERS: University of Birmingham Printers</h1>
+		<Map printers={printers} />
+		{/*<PrinterForm />}*/}
 	</body>
-	<footer class="text-center mt-10">
-		<span>
-			Get Involved: <a
-				href="https://github.com/edapm/bhamprinters"
-				target="_blank" class="text-blue-500 hover:underline">Contribute on GitHub</a
-			>
-		</span>
-		<span class="text-center mt-20 mb-10">
-			(c) 2025 Ed Mason. Hosted on Netlify.
-		</span>
-	</footer>
 </html>

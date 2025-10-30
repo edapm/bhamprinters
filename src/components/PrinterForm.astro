@@ -1,0 +1,77 @@
+---
+import { supabase } from "../lib/supabase";
+import "../styles/global.css";
+let status = "";
+
+const handleSubmit = async (event: SubmitEvent) => {
+	event.preventDefault();
+	const formData = new FormData(event.target as HTMLFormElement);
+	const printer_id = formData.get("printer_id");
+	const proposed_changes = {
+		name: formData.get("name"),
+		building: formData.get("building"),
+		floor: formData.get("floor"),
+		status: formData.get("status"),
+		notes: formData.get("notes"),
+		lat: parseFloat(formData.get("lat")),
+		lng: parseFloat(formData.get("lng")),
+	};
+
+	const { error } = await supabase
+		.from("printer_edits")
+		.insert({ printer_id, proposed_changes });
+
+	if (error) {
+		alert("Error submitting edit: " + error.message);
+	} else {
+		alert("Edit submitted for moderation!");
+		(event.target as HTMLFormElement).reset();
+	}
+};
+---
+
+<form onsubmit={handleSubmit} class="printer-form">
+	<h3>Add or Edit Printer</h3>
+	<label>Printer ID (leave blank for new printer):</label>
+	<input name="printer_id" placeholder="Optional printer ID" />
+
+	<label>Name:</label>
+	<input name="name" required />
+
+	<label>Building:</label>
+	<input name="building" required />
+
+	<label>Floor:</label>
+	<input name="floor" />
+
+	<label>Status:</label>
+	<select name="status">
+		<option>available</option>
+		<option>out of order</option>
+		<option>unknown</option>
+	</select>
+
+	<label>Notes:</label>
+	<textarea name="notes" placeholder="Additional information (optional)"
+	></textarea>
+
+	<label>Latitude:</label>
+	<input name="lat" type="number" step="any" required />
+
+	<label>Longitude:</label>
+	<input name="lng" type="number" step="any" required />
+
+	<button type="submit">Submit</button>
+</form>
+
+<style>
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		max-width: 300px;
+	}
+	button {
+		margin-top: 0.5rem;
+	}
+</style>

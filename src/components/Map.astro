@@ -1,0 +1,41 @@
+---
+const { printers = [] } = Astro.props;
+const printersJSON = JSON.stringify(printers);
+import "../styles/global.css";
+---
+
+<div id="map" style="height: 70vh; width: 100%;" data-printers={printersJSON}>
+</div>
+
+<!-- Leaflet CSS -->
+<link
+	rel="stylesheet"
+	href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	integrity="sha256-o9N1jEJut+T9tH2N2bN6V6LJQbMZkYh5N1t9e+0h+v4="
+	crossorigin=""
+/>
+<!-- Leaflet JS -->
+<script
+	src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+	integrity="sha256-o9N1jEJut+T9tH2N2bN6V6LJQbMZkYh5N1t9e+0h+v4="
+	crossorigin=""></script>
+
+<script type="module">
+	// Inject server-side data directly as JS
+	// Read the serialized printers JSON from the DOM to avoid invalid in-script server expressions
+	const mapEl = document.getElementById("map");
+	const printers = JSON.parse(mapEl.dataset.printers || "[]");
+
+	const map = L.map("map").setView([52.449948, -1.930614], 16);
+
+	L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+		attribution: "© OpenStreetMap contributors",
+	}).addTo(map);
+
+	printers.forEach((p) => {
+		const marker = L.marker([p.lat, p.lng]).addTo(map);
+		marker.bindPopup(
+			`<b>${p.name}</b><br>${p.building}<br><i>Status:</i> ${p.status}<br><i>Notes:</i> ${p.notes || "N/A"}`
+		);
+	});
+</script>
