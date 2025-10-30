@@ -1,12 +1,12 @@
 ---
 import { supabase } from "../lib/supabase";
 import "../styles/global.css";
-import { onMount } from "astro/jsx-runtime";
+// import { onMount } from "astro/jsx-runtime";
 
-let passcode = "";
-let pendingEdits = [];
+// let passcode = "";
+// let pendingEdits = [];
 
-const fetchEdits = async () => {
+/*const fetchEdits = async () => {
 	const { data, error } = await supabase
 		.from("printer_edits")
 		.select("*")
@@ -31,10 +31,11 @@ const handleApproval = async (edit_id, approve) => {
 	} else {
 		alert("Error: " + (await response.text()));
 	}
-};
+};*/
 ---
 
-<html>
+{
+	/*<html>
 	<head>
 		<title>Admin Dashboard</title>
 	</head>
@@ -88,4 +89,5 @@ const handleApproval = async (edit_id, approve) => {
 	button {
 		margin: 0.2rem;
 	}
-</style>
+</style>*/
+}
