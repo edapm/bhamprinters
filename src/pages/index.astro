@@ -1,4 +1,5 @@
 ---
+export const prerender = false;
 import "../styles/global.css";
 import { supabase } from "../lib/supabase";
 import Map from "../components/Map.astro";
@@ -16,7 +17,7 @@ const { data: printers } = await supabase.from("printers").select("*");
 			BHAMPRINTERS: University of Birmingham Printers
 		</h1>
 		<Map printers={printers} />
-		{/*<PrinterForm />}*/}
+		<PrinterForm />
 	</body>
 	<footer class="text-center mt-10">
 		<span>
