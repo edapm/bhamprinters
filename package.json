@@ -9,10 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/netlify": "^6.6.0",
-    "@supabase/supabase-js": "^2.77.0",
+    "@astrojs/netlify": "^6.6.4",
+    "@octokit/app": "^16.1.2",
+    "@octokit/rest": "^22.0.1",
     "@tailwindcss/vite": "^4.1.16",
-    "astro": "^5.15.2",
+    "astro": "^5.17.1",
     "astro-leaflet": "^1.8.1",
     "leaflet": "^1.9.4",
     "tailwindcss": "^4.1.16"
