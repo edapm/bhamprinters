@@ -1,11 +1,12 @@
 ---
 export const prerender = false;
 import "../styles/global.css";
-import { supabase } from "../lib/supabase";
 import Map from "../components/Map.astro";
-import PrinterForm from "../components/PrinterForm.astro";
-
-const { data: printers } = await supabase.from("printers").select("*");
+const locations = import.meta.glob("../data/locations/*.json", {
+	eager: true,
+	import: "default",
+});
+const printers = Object.values(locations);
 ---
 
 <html>
@@ -18,7 +19,6 @@ const { data: printers } = await supabase.from("printers").select("*");
 		<h2 class="text-2xl text-center p-2">
 			Crowdsourced map of University of Birmingham printers
 		</h2>
-		{/*<PrinterForm />*/}
 	</body>
 	<footer class="text-center mt-10">
 		<span>
@@ -29,8 +29,6 @@ const { data: printers } = await supabase.from("printers").select("*");
 			>
 		</span>
 		<br />
-		<span class="text-center mt-20 mb-10">
-			(c) 2025 Ed Mason
-		</span>
+		<span class="text-center mt-20 mb-10"> (c) 2025 Ed Mason </span>
 	</footer>
 </html>
