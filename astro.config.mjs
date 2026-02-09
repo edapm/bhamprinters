@@ -10,7 +10,10 @@ export default defineConfig({
 
   vite: {
       plugins: [tailwindcss()],
-	},
+      optimizeDeps: {
+        include: ['astro-leaflet > leaflet'],   // https://pascal-brand38.github.io/astro-dev/packages/astro-leaflet/#Troubleshooting
+      }
+  },
 
   output: "server",
   adapter: netlify(),
