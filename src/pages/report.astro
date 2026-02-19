@@ -8,10 +8,10 @@ import "../styles/global.css";
 	</head>
 	<body>
 		<div class="m-5 p-5">
-			<form class="grid grid-cols-1" name="contact" netlify>
-				<h1 class="text-2xl p-2">Contribute a New Printer</h1>
-				<h2 class="text-xl p-2">Or Report an Issue</h2>
-				<p>---</p>
+			<h1 class="text-2xl p-2">Contribute a New Printer</h1>
+			<h2 class="text-xl p-2">Or Report an Issue</h2>
+			<p>---</p>
+			<form class="grid grid-cols-1" name="contact" method="POST" netlify>
 				<p>
 					<label class="block"
 						>Name <input
@@ -36,11 +36,9 @@ import "../styles/global.css";
 						></textarea>
 					</label>
 				</p>
-				<p>
 					<button type="submit" class="block m-2 w-full bg-blue-300"
 						>Submit</button
 					>
-				</p>
 			</form>
 		</div>
 	</body>
