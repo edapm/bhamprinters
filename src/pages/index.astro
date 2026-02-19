@@ -1,12 +1,6 @@
 ---
-export const prerender = false;
 import "../styles/global.css";
 import Map from "../components/Map.astro";
-const locations = import.meta.glob("../data/locations/*.json", {
-	eager: true,
-	import: "default",
-});
-const printers = Object.values(locations);
 ---
 
 <html>
@@ -14,7 +8,7 @@ const printers = Object.values(locations);
 		<title>BHAMPRINTERS: HOME</title>
 	</head>
 	<body>
-		<Map printers={printers} />
+		<Map />
 		<h1 class="text-4xl font-mono text-center p-2">BHAMPRINTERS</h1>
 		<h2 class="text-2xl text-center p-2">
 			Crowdsourced map of University of Birmingham printers
@@ -23,12 +17,11 @@ const printers = Object.values(locations);
 	<footer class="text-center mt-10">
 		<span>
 			<a
-				href="https://github.com/edapm/bhamprinters"
-				target="_blank"
-				class="text-blue-500 hover:underline">Contribute on GitHub</a
+				href="/report"
+				class="text-blue-500 hover:underline">Contribute or report an issue</a
 			>
 		</span>
 		<br />
-		<span class="text-center mt-20 mb-10"> (c) 2025-26 Ed Mason </span>
+		<span class="text-center mt-20 mb-10">(c) 2025-26 Ed Mason</span>
 	</footer>
 </html>

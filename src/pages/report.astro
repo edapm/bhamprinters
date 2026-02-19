@@ -1,0 +1,35 @@
+---
+import "../styles/global.css";
+---
+
+<div class="m-5 p-5">
+	<form class="grid grid-cols-1" name="contact" netlify>
+		<h1 class="text-2xl p-2">Contribute a New Printer</h1>
+		<h2 class="text-xl p-2">Or Report an Issue</h2>
+		<p>---</p>
+		<p>
+			<label class="block"
+				>Name <input type="text" name="name" class="mt-2 block w-full" /></label
+			>
+		</p>
+		<p>
+			<label class="block"
+				>Email <input
+					type="email"
+					name="email"
+					class="mt-2 block w-full"
+				/></label
+			>
+		</p>
+		<p>
+			<label class="block"
+				>New Printer / Issue Info <textarea class="mt-2 block w-full"></textarea>
+			</label>
+		</p>
+		<p>
+			<button type="submit" class="block m-2 w-full bg-blue-300 outline-black"
+				>Send</button
+			>
+		</p>
+	</form>
+</div>
